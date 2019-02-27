@@ -1,0 +1,19 @@
+{
+  "name": "draft-js-emoji-mart-plugin",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zamarawka/draft-js-emoji-mart-plugin.git"
+  },
+  "author": "zamarawka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zamarawka/draft-js-emoji-mart-plugin/issues"
+  },
+  "homepage": "https://github.com/zamarawka/draft-js-emoji-mart-plugin#readme"
+}
