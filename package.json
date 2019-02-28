@@ -1,9 +1,20 @@
 {
   "name": "draft-js-emoji-mart-plugin",
   "version": "0.0.1",
-  "description": "",
+  "description": "Emoji-mart plugin for DraftJS.",
   "browserslist": "> 0.25%, not dead",
   "main": "lib",
+  "keywords": [
+    "emoji",
+    "emoji-mart",
+    "editor",
+    "wysiwyg",
+    "draft",
+    "react",
+    "ux",
+    "components",
+    "react-component"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel --out-dir ./lib ./src",
@@ -14,7 +25,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/zamarawka/draft-js-emoji-mart-plugin.git"
   },
-  "author": "zamarawka",
+  "author": "zamarawka <somebody.told@mail.ru> (https://github.com/zamarawka)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/zamarawka/draft-js-emoji-mart-plugin/issues"
