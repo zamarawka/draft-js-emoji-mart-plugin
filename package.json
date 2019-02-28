@@ -36,7 +36,7 @@
   },
   "peerDependencies": {
     "emoji-mart": "^2.9.2",
-    "draft-js": "^0.10.0",
+    "draft-js": "^0.10.5",
     "react": "^16.3.0"
   },
   "devDependencies": {
