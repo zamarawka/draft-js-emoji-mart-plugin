@@ -32,21 +32,21 @@ const emojiPlugin = createEmojiMartPlugin({
 const { Picker } = emojiPlugin;
 
 const MyEditor = ({ editorState, onChange }) => (
-    <div>
-        <Editor
-          editorState={editorState}
-          onChange={onChange}
-          plugins={[emojiPlugin]}
-        />
-        {/*
-            Any props supported by emoji-mart NimblePicker.
-            Feel free to style it and trigger for view.
-        */}
-        <Picker
-            perLine={7}
-            showPreview={false}
-        />
-    </div>
+  <div>
+    <Editor
+      editorState={editorState}
+      onChange={onChange}
+      plugins={[emojiPlugin]}
+    />
+    {/*
+      Any props supported by emoji-mart NimblePicker.
+      Feel free to style it and trigger for view.
+    */}
+    <Picker
+      perLine={7}
+      showPreview={false}
+    />
+  </div>
 )
 
 export default MyEditor;
@@ -81,9 +81,9 @@ import { emojiPlugin } from './MyEditor.jsx';
 const { Emoji } = emojiPlugin;
 
 const TextViewer = ({ props }) => (
-    <div>
-        Useful text with emoji <Emoji decoratedText={'😈'} />
-    </div>
+  <div>
+    Useful text with emoji <Emoji decoratedText={'😈'} />
+  </div>
 );
 
 export default TextViewer;
@@ -101,17 +101,17 @@ const { Emoji } = emojiPlugin;
 
 // Not for production usage.
 const parsedText = 'some string with 😈 '.split(unicodeEmojiRegexp).map(term => {
-    if (term.match(unicodeEmojiRegexp)) {
-        return <Emoji decoratedText={term} />
-    }
+  if (term.match(unicodeEmojiRegexp)) {
+    return <Emoji decoratedText={term} />
+  }
 
-    return term;
+  return term;
 });
 
 console.log(parsedText); // ['some string with', <Emoji decoratedText={'😈'}>]
 
 // Render it by React
 const MyEmojifiedText = () => (
-    <div>{parsedText}</div>
+  <div>{parsedText}</div>
 );
 ```
