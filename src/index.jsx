@@ -23,6 +23,7 @@ type Config = {
   onChange: ?(EditorState) => EditorState,
   set: string,
   emojiSize: number,
+  sheetSize: number,
   data: DataSet
 };
 
@@ -31,6 +32,7 @@ export default function ({
   data,
   set,
   emojiSize = 16,
+  sheetSize = emojiSize * 2,
 }: Config = {}) {
   const getEmoji = getEmojiDataFromNative(data, set);
 
@@ -47,6 +49,7 @@ export default function ({
         <Emoji
           emoji={foundedEmoji}
           size={emojiSize}
+          sheetSize={sheetSize}
           data={data}
           set={set}
         >
@@ -77,6 +80,7 @@ export default function ({
       ref={ref}
       set={set}
       data={data}
+      sheetSize={sheetSize}
       onSelect={handleEmoji}
       {...props}
     />

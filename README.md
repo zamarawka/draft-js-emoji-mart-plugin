@@ -54,12 +54,13 @@ export default MyEditor;
 
 ## Configuration Parameters
 
-| Name | Required | Description |
-| ---- | -------- | ----------- |
-| data | true | [Dataset](https://github.com/missive/emoji-mart/blob/master/README.md#datasets) from emoji-mart. Used for bind picker and replace emoji in editor. |
-| set | true | Addtional param to Dataset, used by emoji-mart. |
-| emojiSize | false | [Size](https://github.com/missive/emoji-mart/blob/master/README.md#emoji) wich pass to Emoji component from emoji-mart. |
-| onChange | false | Call then DraftJS recieve new state. |
+| Name | Required | Default | Description |
+| ---- | -------- | ------- | ----------- |
+| data | true | `undefined` | [Dataset](https://github.com/missive/emoji-mart/blob/master/README.md#datasets) from emoji-mart. Used for bind picker and replace emoji in editor. |
+| set | true | `undefined` | Addtional param to Dataset, used by emoji-mart. |
+| emojiSize | false | 16 | [Size](https://github.com/missive/emoji-mart/blob/master/README.md#emoji) wich pass to Emoji component from emoji-mart.  |
+| sheetSize | false | emojiSize * 2 | [Sheet size](https://github.com/missive/emoji-mart#sheet-sizes) wich pass to Emoji component from emoji-mart. By default emojiSize * 2. |
+| onChange | false | undefined | Call then DraftJS recieve new state. |
 
 ## Additional plugin feature
 
