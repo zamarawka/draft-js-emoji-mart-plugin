@@ -11,7 +11,7 @@ type EmojiEntity = {
   short_names: Array<string>
 };
 
-type DataSet = {
+export type DataSet = {
   compressed: bool,
   emojis: {
     [string]: EmojiEntity

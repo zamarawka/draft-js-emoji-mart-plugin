@@ -1,3 +1,4 @@
+// @flow
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-multi-comp */
 
@@ -11,22 +12,35 @@ import attachImmutableEntitiesToEmojis from './modifiers/attachImmutableEntities
 import addEmoji from './modifiers/addEmoji';
 import emoji from './strategies/emoji';
 import getEmojiDataFromNative from './utils/getEmojiDataFromNative';
+import type { DataSet } from './utils/getEmojiDataFromNative';
+
+type Store = {
+  getEditorState: ?() => EditorState,
+  setEditorState: ?(EditorState) => void
+};
+
+type Config = {
+  onChange: ?(EditorState) => EditorState,
+  set: string,
+  emojiSize: number,
+  data: DataSet
+};
 
 export default function ({
-  onChange = null,
+  onChange,
   data,
   set,
   emojiSize = 16,
-} = {}) {
+}: Config = {}) {
   const getEmoji = getEmojiDataFromNative(data, set);
   const addEmojiModifier = addEmoji.bind(null, getEmoji);
 
-  const store = {
+  const store: Store = {
     getEditorState: undefined,
     setEditorState: undefined,
   };
 
-  const EmojiComponent = React.memo(({ decoratedText, children }) => {
+  const EmojiComponent = React.memo<Object, string | Emoji>(({ decoratedText, children }) => {
     const foundedEmoji = getEmoji(decoratedText);
 
     if (foundedEmoji) {
@@ -51,7 +65,7 @@ export default function ({
     store.setEditorState(newEditorState);
   };
 
-  const PickerComponent = React.forwardRef((props, ref) => (
+  const PickerComponent = React.forwardRef<Object, Picker>((props, ref) => (
     <Picker
       ref={ref}
       set={set}
@@ -72,7 +86,7 @@ export default function ({
     Emoji: EmojiComponent,
     Picker: PickerComponent,
     decorators,
-    initialize: ({ getEditorState, setEditorState }) => {
+    initialize: ({ getEditorState, setEditorState }: Store) => {
       store.getEditorState = getEditorState;
       store.setEditorState = setEditorState;
     },
@@ -83,7 +97,7 @@ export default function ({
     modifiers: {
       addEmoji: addEmojiModifier,
     },
-    onChange: (editorState) => {
+    onChange: (editorState: EditorState) => {
       let newEditorState = attachImmutableEntitiesToEmojis(editorState);
 
       if (!newEditorState.getCurrentContent().equals(editorState.getCurrentContent())) {
