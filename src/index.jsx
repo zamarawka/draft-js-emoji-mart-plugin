@@ -2,7 +2,9 @@
 /* eslint-disable react/no-multi-comp */
 
 import React from 'react';
-import { NimbleEmoji as Emoji, NimblePicker as Picker } from 'emoji-mart';
+// Reduce bundle size. Tree shaking issue https://github.com/missive/emoji-mart/issues/229#issuecomment-448080501
+import Picker from 'emoji-mart/dist/components/picker/nimble-picker';
+import Emoji from 'emoji-mart/dist/components/emoji/nimble-emoji';
 import { EditorState } from 'draft-js';
 
 import attachImmutableEntitiesToEmojis from './modifiers/attachImmutableEntitiesToEmojis';
