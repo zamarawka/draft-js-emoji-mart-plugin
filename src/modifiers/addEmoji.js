@@ -18,6 +18,7 @@ const addEmoji = (
 ): EditorState => {
   const contentState = editorState.getCurrentContent();
   const contentStateWithEntity = contentState
+    // $FlowFixMe
     .createEntity('emoji', 'IMMUTABLE', { emojiUnicode: emoji });
   const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
   const currentSelectionState = editorState.getSelection();
@@ -70,6 +71,7 @@ const addEmoji = (
   const newEditorState = EditorState.push(
     editorState,
     emojiAddedContent,
+    // $FlowFixMe
     'insert-emoji',
   );
 

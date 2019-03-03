@@ -35,6 +35,7 @@ export default function attachImmutableEntitiesToEmojis(editorState: EditorState
         .set('focusOffset', end);
       const emojiText = plainText.substring(start, end);
       const contentStateWithEntity = newContentState.createEntity(
+        // $FlowFixMe
         'emoji',
         'IMMUTABLE',
         { emojiUnicode: emojiText },
@@ -58,6 +59,7 @@ export default function attachImmutableEntitiesToEmojis(editorState: EditorState
     return EditorState.push(
       editorState,
       newContentState,
+      // $FlowFixMe
       'convert-to-immutable-emojis',
     );
   }
