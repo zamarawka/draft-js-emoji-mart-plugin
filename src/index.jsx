@@ -50,7 +50,7 @@ export default function ({
           data={data}
           set={set}
         >
-          {children}
+          {children || decoratedText }
         </Emoji>
       );
     }
