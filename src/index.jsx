@@ -33,7 +33,6 @@ export default function ({
   emojiSize = 16,
 }: Config = {}) {
   const getEmoji = getEmojiDataFromNative(data, set);
-  const addEmojiModifier = addEmoji.bind(null, getEmoji);
 
   const store: Store = {
     getEditorState: undefined,
@@ -60,7 +59,15 @@ export default function ({
   });
 
   const handleEmoji = (emojiSymbol) => {
-    const newEditorState = addEmojiModifier(store.getEditorState(), emojiSymbol.native);
+    if (!store.getEditorState) {
+      throw new Error('Emoji-mart plugin: handle emoji fired on unbinded instace.');
+    }
+
+    const newEditorState = addEmoji(store.getEditorState(), emojiSymbol.native);
+
+    if (!store.setEditorState) {
+      throw new Error('Emoji-mart plugin: handle emoji fired on unbinded instace.');
+    }
 
     store.setEditorState(newEditorState);
   };
@@ -95,7 +102,7 @@ export default function ({
       store.setEditorState = undefined;
     },
     modifiers: {
-      addEmoji: addEmojiModifier,
+      addEmoji,
     },
     onChange: (editorState: EditorState) => {
       let newEditorState = attachImmutableEntitiesToEmojis(editorState);

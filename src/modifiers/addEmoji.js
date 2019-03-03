@@ -11,7 +11,6 @@ const Mode = {
 };
 
 const addEmoji = (
-  getEmoji: () => mixed,
   editorState: EditorState,
   emoji: string,
   mode: string = Mode.INSERT,
