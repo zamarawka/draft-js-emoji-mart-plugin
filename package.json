@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/zamarawka/draft-js-emoji-mart-plugin#readme",
   "dependencies": {
+    "emoji-regex": "^7.0.3",
     "find-with-regex": "^1.1.3"
   },
   "peerDependencies": {
