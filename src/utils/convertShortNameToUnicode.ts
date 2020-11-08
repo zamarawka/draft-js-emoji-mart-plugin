@@ -1,14 +1,12 @@
-// @flow
-
 // Original: https://github.com/draft-js-plugins/draft-js-plugins/blob/master/draft-js-emoji-plugin/src/utils/convertShortNameToUnicode.js
 export default function convertShortNameToUnicode(unicode: string): string {
   if (unicode.indexOf('-') > -1) {
-    const parts = [];
+    const parts: string[] = [];
 
     const s = unicode.split('-');
 
     for (let i = 0; i < s.length; i += 1) {
-      let part = parseInt(s[i], 16);
+      let part: number | string = parseInt(s[i], 16);
 
       if (part >= 0x10000 && part <= 0x10FFFF) {
         const hi = Math.floor((part - 0x10000) / 0x400) + 0xD800;

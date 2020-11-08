@@ -1,10 +1,10 @@
-// @flow
-
 // Original: https://github.com/draft-js-plugins/draft-js-plugins/blob/master/draft-js-emoji-plugin/src/modifiers/attachImmutableEntitiesToEmojis.js
 import { EditorState, Modifier, SelectionState } from 'draft-js';
 import findWithRegex from 'find-with-regex';
 
 import { unicodeEmojiRegexp } from '../constants';
+
+export const BLOCK_TYPE = 'emoji';
 
 /*
  * Attaches Immutable DraftJS Entities to the Emoji text.
@@ -18,25 +18,28 @@ export default function attachImmutableEntitiesToEmojis(editorState: EditorState
   let newContentState = contentState;
 
   blocks.forEach((block) => {
+    if (!block) {
+      return;
+    }
+
     const plainText = block.getText();
 
-    const addEntityToEmoji = (start, end) => {
+    const addEntityToEmoji = (start: number, end: number) => {
       const existingEntityKey = block.getEntityAt(start);
       if (existingEntityKey) {
         // avoid manipulation in case the emoji already has an entity
         const entity = newContentState.getEntity(existingEntityKey);
-        if (entity && entity.get('type') === 'emoji') {
+        if (entity && entity.getType() === BLOCK_TYPE) {
           return;
         }
       }
 
-      const selection = SelectionState.createEmpty(block.getKey())
+      const selection: SelectionState = SelectionState.createEmpty(block.getKey())
         .set('anchorOffset', start)
-        .set('focusOffset', end);
+        .set('focusOffset', end) as SelectionState;
       const emojiText = plainText.substring(start, end);
       const contentStateWithEntity = newContentState.createEntity(
-        // $FlowFixMe
-        'emoji',
+        BLOCK_TYPE,
         'IMMUTABLE',
         { emojiUnicode: emojiText },
       );
@@ -47,7 +50,7 @@ export default function attachImmutableEntitiesToEmojis(editorState: EditorState
         newContentState,
         selection,
         emojiText,
-        null,
+        undefined,
         entityKey,
       );
     };
@@ -59,8 +62,7 @@ export default function attachImmutableEntitiesToEmojis(editorState: EditorState
     return EditorState.push(
       editorState,
       newContentState,
-      // $FlowFixMe
-      'convert-to-immutable-emojis',
+      'change-block-data',
     );
   }
 

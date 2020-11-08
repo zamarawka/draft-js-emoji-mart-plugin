@@ -1,3 +1,9 @@
-.babelrc
-.eslintrc
+babel.config.js
+.editorconfig
+.eslintrc.js
 /src
+/stories
+/.storybook
+/storybook-static
+tsconfig.json
+/dist
