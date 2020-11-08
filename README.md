@@ -1,6 +1,13 @@
+[![Ci Status](https://github.com/zamarawka/draft-js-emoji-mart-plugin/workflows/CI/badge.svg)](https://github.com/zamarawka/draft-js-emoji-mart-plugin/actions)
+[![Npm version](https://img.shields.io/npm/v/draft-js-emoji-mart-plugin?style=flat&logo=npm)](https://www.npmjs.com/package/draft-js-emoji-mart-plugin)
+[![Draft.js version](https://img.shields.io/npm/dependency-version/draft-js-emoji-mart-plugin/peer/draft-js.svg?style=flat)](https://draftjs.org)
+[![React.js version](https://img.shields.io/npm/dependency-version/draft-js-emoji-mart-plugin/peer/react.svg?style=flat&logo=react)](https://reactjs.org)
+
 # Emoji-mart integration with DraftJS
 
 *This plugin for [draft-js-editor](https://www.npmjs.com/package/draft-js-plugins-editor)*
+
+Package includes its TypeScript Definition file
 
 ## Install
 
@@ -58,8 +65,8 @@ export default MyEditor;
 | ---- | -------- | ------- | ----------- |
 | data | true | `undefined` | [Dataset](https://github.com/missive/emoji-mart/blob/master/README.md#datasets) from emoji-mart. Used for bind picker and replace emoji in editor. |
 | set | true | `undefined` | Addtional param to Dataset, used by emoji-mart. |
-| emojiSize | false | 16 | [Size](https://github.com/missive/emoji-mart/blob/master/README.md#emoji) wich pass to Emoji component from emoji-mart.  |
-| sheetSize | false | emojiSize * 2 | [Sheet size](https://github.com/missive/emoji-mart#sheet-sizes) wich pass to Emoji component from emoji-mart. By default emojiSize * 2. |
+| sheetSize | false | 32 | [Sheet size](https://github.com/missive/emoji-mart#sheet-sizes) wich pass to Emoji component from emoji-mart. |
+| emojiSize | false | sheetSize / 2 | [Size](https://github.com/missive/emoji-mart/blob/master/README.md#emoji) wich pass to Emoji component from emoji-mart. By default sheetSize / 2. |
 | onChange | false | undefined | Call then DraftJS recieve new state. |
 
 ## Additional plugin feature
@@ -115,3 +122,23 @@ const MyEmojifiedText = () => (
   <div>{parsedText}</div>
 );
 ```
+
+## Development
+
+Run development env
+
+```sh
+npm run watch # for build ts on change
+npm run storybook # run sandbox with base example
+```
+
+Local build
+
+```sh
+npm run lint
+npm run build # build ts by babel and generate typings
+```
+
+Active maintenance with care and ❤️.
+
+Feel free to send a PR.
