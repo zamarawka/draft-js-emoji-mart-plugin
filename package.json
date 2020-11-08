@@ -20,6 +20,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "type-check": "tsc --noEmit",
+    "watch": "tsc --watch",
     "build": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --ignore '**/*.d.ts' --source-maps",
