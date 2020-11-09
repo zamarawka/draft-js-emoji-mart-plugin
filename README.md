@@ -7,6 +7,8 @@
 
 *This plugin for [draft-js-editor](https://www.npmjs.com/package/draft-js-plugins-editor)*
 
+[Demo](https://zamarawka.github.io/draft-js-emoji-mart-plugin/)
+
 Package includes its TypeScript Definition file
 
 ## Install
@@ -58,6 +60,8 @@ const MyEditor = ({ editorState, onChange }) => (
 
 export default MyEditor;
 ```
+
+Checkout `stories/CustomEditor.tsx` for detailed example.
 
 ## Configuration Parameters
 
