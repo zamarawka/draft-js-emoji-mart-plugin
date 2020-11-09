@@ -19,7 +19,7 @@ type Store = {
   setEditorState?: (EditorState: EditorState) => void
 };
 
-interface Config {
+export interface Config {
   onChange?: (EditorState: EditorState) => EditorState,
   set: EmojiSet,
   emojiSize?: number,
