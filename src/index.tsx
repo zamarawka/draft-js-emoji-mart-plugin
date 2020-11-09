@@ -3,7 +3,7 @@ import React from 'react';
 // Reduce bundle size. Tree shaking issue https://github.com/missive/emoji-mart/issues/229#issuecomment-448080501
 import Picker, { NimblePickerProps } from 'emoji-mart/dist-es/components/picker/nimble-picker';
 import Emoji from 'emoji-mart/dist-es/components/emoji/nimble-emoji';
-import { Data } from 'emoji-mart/dist-es/utils/data';
+import { Data, Emoji as DataEmoji } from 'emoji-mart/dist-es/utils/data';
 import { EmojiSet, EmojiSheetSize } from 'emoji-mart/dist-es/utils/shared-props';
 import { EmojiData, BaseEmoji, CustomEmoji } from 'emoji-mart/dist-es/utils/emoji-index/nimble-emoji-index';
 import { EditorState } from 'draft-js';
@@ -19,12 +19,20 @@ type Store = {
   setEditorState?: (EditorState: EditorState) => void
 };
 
+// Types in @types/emoji-mart not compatible with emoji-mart 3 version
+// Don't use this typings in package. Patch for usage.
+export type DataSet = Omit<Data, 'emojis'> & {
+  emojis: {
+    [key: string]: Omit<DataEmoji, 'skin_variations'>
+  }
+};
+
 export interface Config {
   onChange?: (EditorState: EditorState) => EditorState,
   set: EmojiSet,
   emojiSize?: number,
   sheetSize?: EmojiSheetSize,
-  data: Data
+  data: DataSet
 }
 
 interface EmojiComponentProps {
