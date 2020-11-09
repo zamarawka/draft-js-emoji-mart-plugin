@@ -16,6 +16,42 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
+      - name: Cache deps
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - run: npm ci
       - run: npm run lint
       - run: npm run build
+      - name: Package build
+        uses: actions/upload-artifact@v2
+        with:
+          name: lib-build
+          path: lib
+
+  build-storybook:
+    needs: checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Cache deps
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm ci
+      - uses: actions/download-artifact@v2
+        with:
+          name: lib-build
+      - name: Display structure of downloaded files
+        run: ls -R
