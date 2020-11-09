@@ -9,7 +9,7 @@
 
 [Demo](https://zamarawka.github.io/draft-js-emoji-mart-plugin/)
 
-Package includes its TypeScript Definition file
+Package includes its TypeScript Definitions
 
 ## Install
 
@@ -142,6 +142,8 @@ Local build
 npm run lint
 npm run build # build ts by babel and generate typings
 ```
+
+______
 
 Active maintenance with care and ❤️.
 
