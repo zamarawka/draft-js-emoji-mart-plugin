@@ -127,6 +127,16 @@ const MyEmojifiedText = () => (
 );
 ```
 
+## Older versions
+
+Last version with supports draft-js 0.10 and draft-js-plugins-editor 2.x
+
+There is no changes on plugin usage
+
+```sh
+npm install -S draft-js-emoji-mart-plugin@0.0.6
+```
+
 ## Development
 
 Run development env
