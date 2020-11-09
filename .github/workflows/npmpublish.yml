@@ -37,7 +37,7 @@ jobs:
           path: lib
 
   publish-gpr:
-    needs: build
+    needs: publish-npm
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
