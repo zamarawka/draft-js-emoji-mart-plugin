@@ -1,9 +1,11 @@
 babel.config.js
 .editorconfig
 .eslintrc.js
+.eslintignore
 /src
 /stories
 /.storybook
 /storybook-static
 tsconfig.json
 /dist
+.github
