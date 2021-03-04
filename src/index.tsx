@@ -100,6 +100,7 @@ export default function createPlugin({
       return (
         <Emoji
           emoji={foundedEmoji}
+          skin={foundedEmoji.skin || 1}
           size={emojiSize}
           sheetSize={sheetSize}
           data={data}
